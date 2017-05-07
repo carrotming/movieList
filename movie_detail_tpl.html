@@ -1,0 +1,21 @@
+
+<div ng-show="flag" style="text-align: center">
+    <img ng-src="loading.gif" alt="" >
+</div>
+
+<div ng-hide="flag">
+
+    <h1 ng-bind="data.alt_title"></h1>
+
+    <div class="detail_content">
+        <dl class="detail_dl">
+            <dt><img ng-src="{{data.image}}" width="300px" height="400px"></dt>
+            <dd>
+                <p>类型: <span ng-repeat="type in data.attrs.movie_type" ng-bind="type+','"></span></p>
+                <p>导演: <span ng-repeat="author in data.author" ng-bind="author.name"></span> </p>
+            </dd>
+        </dl>
+    </div>
+    <div ng-bind="data.summary"></div>
+</div>
+

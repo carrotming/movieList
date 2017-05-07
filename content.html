@@ -1,0 +1,41 @@
+
+<div ng-show="flag" style="text-align: center">
+    <img ng-src="loading.gif" alt="" >
+</div>
+
+<div ng-hide="flag">
+
+    <!--绑定标题-->
+    <h1 ng-bind="data.title"></h1>
+    <div class="list" ng-repeat="movie in data.subjects | filter: info ">
+        <!--遍历data.subjects数据-->
+        <a href="#!/details/{{movie.id}}" >
+            <dl>
+                <!--绑定图片-->
+                <dt><img src="{{movie.images.small}}" alt=""></dt>
+                <dd>
+                    <!--绑定电影名字-->
+                    <h4 ng-bind="movie.title"></h4>
+                    <!--绑定类型-->
+                    <p>类型:<span ng-repeat="genres in movie.genres" ng-bind="genres+','"></span></p>
+                    <!--电影导演-->
+                    <p >导演:<span ng-bind="movie.directors[0].name"></span></p>
+                    <!--主演-->
+                    <p>主演:<span ng-repeat="casts in movie.casts" ng-bind="casts.name+','"></span></p>
+                    <!--地区-->
+                    <p>上演时间:<span ng-repeat="pubdates in movie.pubdates" ng-bind="pubdates+','"></span></p>
+                    <p>时长:<span ng-bind="movie.durations[0]"></span></p>
+                </dd>
+                <span class="score" ng-bind="movie.rating.average"></span>
+            </dl>
+        </a>
+    </div>
+    <div class="page">
+        <a  ng-click="prev()">上一页</a>
+        <a  ng-click="next()">下一页</a>
+    </div>
+
+</div>
+
+
+
